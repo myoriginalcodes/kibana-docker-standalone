@@ -1,5 +1,5 @@
 {
-    "name": "myoriginalcodes/elasticsearch-docker-standalone",
+    "name": "myoriginalcodes/kibana-docker-standalone",
     "version": "0.0.1-dev",
     "description": "Kibana docker container - standalone version",
     "keywords": ["kibana", "elk", "elastic stack", "docker"],
