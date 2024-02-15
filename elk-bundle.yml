@@ -1,0 +1,31 @@
+###############################################################################
+#                                 Kibana                                      #
+#                          by myoriginalcodes.com                             #
+###############################################################################
+version: '3.9'
+
+services:
+
+    kibana:
+        container_name: ${KIBANA_SERVER_NAME}
+        build: ./docker
+        restart: unless-stopped
+        volumes:
+            - '${KIBANA_CONFIG_VOLUME}:/usr/share/kibana/config'
+            - '${KIBANA_LOGS_VOLUME}:/var/log/kibana'
+        ports:
+            - "${KIBANA_EXTERNAL_PORT}:${KIBANA_TCP_PORT}"
+        environment:
+            ELASTICSEARCH_HOST_URL: ${KIBANA_ELASTICSEARCH_HOST_URL}
+            KIBANA_SERVER_NAME: ${KIBANA_SERVER_NAME}
+            KIBANA_SERVER_HOST: ${KIBANA_SERVER_HOST}
+            KIBANA_TCP_PORT: ${KIBANA_TCP_PORT}
+            KIBANA_INTERNAL_USER: ${KIBANA_ELASTICSEARCH_USER}
+            KIBANA_INTERNAL_PASSWORD: ${KIBANA_ELASTICSEARCH_PASSWORD}
+        networks:
+            - elk
+
+networks:
+    elk:
+      external: true
+      name: ${KIBANA_NETWORK}
