@@ -23,9 +23,9 @@ services:
             KIBANA_INTERNAL_USER: ${KIBANA_ELASTICSEARCH_USER}
             KIBANA_INTERNAL_PASSWORD: ${KIBANA_ELASTICSEARCH_PASSWORD}
         networks:
-            - elk
+            - bundle
 
 networks:
-    elk:
+    bundle:
       external: true
       name: ${KIBANA_NETWORK}
